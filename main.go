@@ -21,7 +21,7 @@ func main() {
 
 	conf.DB = db
 
-	http.HandleFunc("/post/create", hd.CreatePost)
+	http.HandleFunc("/post/createPost", hd.CreatePost)
 
 	log.Printf("Server (portAPI) started at http://localhost:%v\n", conf.Port)
 	http.ListenAndServe(":"+conf.Port, nil)
