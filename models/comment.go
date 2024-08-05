@@ -1,9 +1,9 @@
 package models
 
 import (
-	"database/sql"
 	"log"
 	"os"
+	"post/config"
 	"time"
 )
 
@@ -16,8 +16,8 @@ type Comment struct {
 	CreateAt time.Time `json:"createAt"`
 }
 
-func (comment *Comment) CreateComment(db *sql.DB) error {
-	tx, err := db.Begin()
+func (comment *Comment) CreateComment() error {
+	tx, err := config.DB.Begin()
 	if err != nil {
 		log.Println(err)
 		return err
