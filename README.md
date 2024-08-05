@@ -1,7 +1,8 @@
 # socialPost
+
 a personal repo testing
 
-# Todo
+## Todo
 
 - createPost(userId, data)
 - getAllPost(type)
