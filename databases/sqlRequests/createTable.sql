@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS posts (
     content TEXT NOT NULL,
     privacy TEXT NOT NULL, -- 'public', 'private', 'almost_private'
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    type TEXT NOT NULL, -- 'user', 'group'
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
@@ -17,6 +16,15 @@ CREATE TABLE IF NOT EXISTS post_permissions (
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
+CREATE TABLE IF NOT EXISTS post_reaction (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id INTEGER,
+    user_id INTEGER,
+    reaction TEXT NOT NULL,
+    FOREIGN KEY(post_id) REFERENCES posts(id),
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
 CREATE TABLE IF NOT EXISTS comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     post_id INTEGER,
@@ -24,15 +32,6 @@ CREATE TABLE IF NOT EXISTS comments (
     content TEXT NOT NULL,
     image TEXT,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(post_id) REFERENCES posts(id),
-    FOREIGN KEY(user_id) REFERENCES users(id)
-);
-
-CREATE TABLE IF NOT EXISTS post_reaction (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    post_id INTEGER,
-    user_id INTEGER,
-    reaction TEXT NOT NULL,
     FOREIGN KEY(post_id) REFERENCES posts(id),
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
