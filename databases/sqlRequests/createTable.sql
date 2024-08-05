@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS posts (
     content TEXT NOT NULL,
     privacy TEXT NOT NULL, -- 'public', 'private', 'almost_private'
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    type TEXT NOT NULL, -- 'all', 'group'
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
