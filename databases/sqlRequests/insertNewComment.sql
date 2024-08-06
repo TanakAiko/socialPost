@@ -1,11 +1,8 @@
-INSERT INTO
-    comments (
-        postId,
-        userId,
+INSERT INTO comments (
+        post_id,
+        user_id,
         content,
         image,
-        createdAt
+        created_at
     )
-VALUES
-    (?, ?, ?, ?, ?)
-
+VALUES (?, ?, ?, ?, ?)

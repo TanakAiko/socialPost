@@ -8,7 +8,7 @@ import (
 // The InitDB function initializes a connection to a SQLite database and creates a table if it doesn't
 // exist.
 func InitDB() (*sql.DB, error) {
-	connDB, err := sql.Open("sqlite3", "./databases/post.db")
+	connDB, err := sql.Open("sqlite3", "./databases/database.db")
 	if err != nil {
 		return nil, err
 	}

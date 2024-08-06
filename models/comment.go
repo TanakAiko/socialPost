@@ -8,12 +8,12 @@ import (
 )
 
 type Comment struct {
-	Id       int       `json:"commentId"`
-	PostId   int       `json:"postId"`
-	UserId   int       `json:"userId"`
-	Content  string    `json:"content"`
-	Image    string    `json:"image"`
-	CreateAt time.Time `json:"createAt"`
+	Id        int       `json:"commentId"`
+	PostId    int       `json:"postId"`
+	UserId    int       `json:"userId"`
+	Content   string    `json:"content"`
+	Image     string    `json:"image"`
+	CreatedAt time.Time `json:"createAt"`
 }
 
 func (comment *Comment) CreateComment() error {
