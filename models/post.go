@@ -15,6 +15,7 @@ type Post struct {
 	Content   string    `json:"content"`
 	Type      string    `json:"type"`
 	Privacy   string    `json:"privacy"`
+	AuthList  []int     `json:"authList"`
 	CreatedAt time.Time `json:"createdAt"`
 }
 
@@ -40,6 +41,7 @@ func (post *Post) CreatePost() error {
 
 	_, err = stmt.Exec(
 		post.UserId,
+		post.GroupId,
 		post.Image,
 		post.Content,
 		post.Type,
