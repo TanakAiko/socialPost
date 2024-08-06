@@ -4,9 +4,9 @@ CREATE TABLE
         user_id INTEGER,
         image TEXT,
         content TEXT NOT NULL,
-        privacy TEXT NOT NULL, -- 'public', 'private', 'almost_private'
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
         type TEXT NOT NULL, -- 'all', 'group'
+        privacy TEXT NOT NULL, -- 'public', 'private', 'almost_private'
+        created_at DATETIME NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id)
     );
 

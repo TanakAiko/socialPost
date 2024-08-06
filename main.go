@@ -20,6 +20,8 @@ func main() {
 	conf.DB = db
 
 	http.HandleFunc("/post/createPost", hd.CreatePost)
+	http.HandleFunc("/post/getAllPost", hd.GetAllPost)
+
 	http.HandleFunc("/post/createComment", hd.CreateComment)
 
 	log.Printf("Server (port service) started at http://localhost:%v\n", conf.Port)
