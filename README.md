@@ -14,7 +14,7 @@ a personal repo testing
 
 - createPost(userId, data...) ✅
 - getAllPost(type) 🚀
-- getGroupPost(type, groupId)
+- getGroupPost(groupId)
 
 - createComment(idPost, userId, data...) ✅
 - getComment(idPost)

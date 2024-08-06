@@ -21,6 +21,7 @@ func main() {
 
 	http.HandleFunc("/post/createPost", hd.CreatePost)
 	http.HandleFunc("/post/getAllPost", hd.GetAllPost)
+	http.HandleFunc("/post/getAllPost", hd.GetGroupPost)
 
 	http.HandleFunc("/post/createComment", hd.CreateComment)
 	http.HandleFunc("/post/getAllPostComment", hd.GetAllPostComment)

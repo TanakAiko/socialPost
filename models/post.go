@@ -10,6 +10,7 @@ import (
 type Post struct {
 	Id        int       `json:"postId"`
 	UserId    int       `json:"userId"`
+	GroupId   int       `json:"groupId"`
 	Image     string    `json:"image"`
 	Content   string    `json:"content"`
 	Type      string    `json:"type"`
