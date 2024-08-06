@@ -5,11 +5,13 @@ a personal repo testing
 ## Todo
 
 ### Status
+
 - ongoing (🚀)
 - done (✅)
 - failed (❌)
 
 ### Work
+
 - createPost(userId, data...) ✅
 - getAllPost(type) 🚀
 - getGroupPost(type, groupId)
