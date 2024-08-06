@@ -27,7 +27,7 @@ func main() {
 	http.HandleFunc("/post/getAllPostComment", hd.GetAllPostComment)
 	http.HandleFunc("/post/getLastComment", hd.GetLastComment)
 	http.HandleFunc("/post/deleteComment", hd.DeleteComment)
-	http.HandleFunc("/post/commentReaction", hd.CommentReaction)
+	http.HandleFunc("/post/commentReaction", hd.CreateCommentReaction)
 
 	log.Printf("Server (port service) started at http://localhost:%v\n", conf.Port)
 	http.ListenAndServe(":"+conf.Port, nil)
