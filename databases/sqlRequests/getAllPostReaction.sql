@@ -1,12 +1,9 @@
-SELECT p.id,
-    p.user_id,
-    p.group_id,
-    p.image,
-    p.content,
-    p.type,
-    p.privacy,
-    p.created_at
-FROM posts AS p
+SELECT pr.id,
+    pr.post_id,
+    pr.user_id,
+    pr.reaction
+FROM post_reaction AS pr
+    LEFT JOIN posts AS p ON pr.post_id = p.id
     LEFT JOIN post_permissions AS pp ON (
         p.id = pp.post_id
         AND pp.user_id = ?
@@ -29,4 +26,3 @@ WHERE p.type = 'all'
             AND pp.user_id IS NOT NULL
         )
     )
-ORDER BY p.created_at DESC

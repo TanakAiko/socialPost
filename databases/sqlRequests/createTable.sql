@@ -9,6 +9,14 @@ CREATE TABLE IF NOT EXISTS posts (
     created_at DATETIME NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
+CREATE TABLE IF NOT EXISTS post_reaction (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id INTEGER,
+    user_id INTEGER,
+    reaction TEXT NOT NULL,
+    FOREIGN KEY(post_id) REFERENCES posts(id),
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
 CREATE TABLE IF NOT EXISTS post_permissions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     post_id INTEGER,

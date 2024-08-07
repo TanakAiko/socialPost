@@ -8,7 +8,7 @@ import (
 
 type Comment_reaction struct {
 	Id        int    `json:"commentReactionId"`
-	CommentId int    `json:"CommentId"`
+	CommentId int    `json:"commentId"`
 	UserId    int    `json:"userId"`
 	Reaction  string `json:"reaction"`
 }
