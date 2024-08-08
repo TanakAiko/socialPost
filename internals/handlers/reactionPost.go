@@ -62,70 +62,52 @@ func SetReactionPost(w http.ResponseWriter, r *http.Request) {
 	tools.WriteResponse(w, "New reaction post created", http.StatusCreated)
 }
 
-func GetAllPostReaction(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-
-	var reacPostData md.Post_reaction
-	json.NewDecoder(r.Body).Decode(&reacPostData)
+// fonction for the GetAllPost
+func getAllPostReaction(userId int) ([]md.Post_reaction, error) {
+	reacPosts := []md.Post_reaction{}
 
 	content, err := os.ReadFile("./databases/sqlRequests/getAllPostReaction.sql")
 	if err != nil {
-		http.Error(w, "Error while getting all post : "+err.Error(), http.StatusInternalServerError)
-		return
+		return reacPosts, err
 	}
 
-	rows, err := config.DB.Query(string(content), reacPostData.UserId, reacPostData.UserId)
+	rows, err := config.DB.Query(string(content), userId, userId)
 	if err != nil {
-		http.Error(w, "Error while getting all post : "+err.Error(), http.StatusInternalServerError)
-		return
+		return reacPosts, err
 	}
 	defer rows.Close()
 
-	reacPosts := []md.Post_reaction{}
 	for rows.Next() {
 		var reacPost md.Post_reaction
 		if err := rows.Scan(&reacPost.Id, &reacPost.PostId, &reacPost.UserId, &reacPost.Reaction); err != nil {
-			http.Error(w, "Error while getting all post : "+err.Error(), http.StatusInternalServerError)
-			return
+			return reacPosts, err
 		}
 		reacPosts = append(reacPosts, reacPost)
 	}
-	tools.WriteResponse(w, reacPosts, http.StatusOK)
+	return reacPosts, nil
 }
 
-func GetGroupPostReaction(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-
-	var postData md.Post
-	json.NewDecoder(r.Body).Decode(&postData)
+// fonction for the GetGroupPost
+func getGroupPostReaction(groupId int) ([]md.Post_reaction, error) {
+	reacPosts := []md.Post_reaction{}
 
 	content, err := os.ReadFile("./databases/sqlRequests/getGroupPostReaction.sql")
 	if err != nil {
-		http.Error(w, "Error while getting all post : "+err.Error(), http.StatusInternalServerError)
-		return
+		return reacPosts, err
 	}
 
-	rows, err := config.DB.Query(string(content), postData.GroupId)
+	rows, err := config.DB.Query(string(content), groupId)
 	if err != nil {
-		http.Error(w, "Error while getting all post : "+err.Error(), http.StatusInternalServerError)
-		return
+		return reacPosts, err
 	}
 	defer rows.Close()
 
-	reacPosts := []md.Post_reaction{}
 	for rows.Next() {
 		var reacPost md.Post_reaction
 		if err := rows.Scan(&reacPost.Id, &reacPost.PostId, &reacPost.UserId, &reacPost.Reaction); err != nil {
-			http.Error(w, "Error while getting all post : "+err.Error(), http.StatusInternalServerError)
-			return
+			return reacPosts, err
 		}
 		reacPosts = append(reacPosts, reacPost)
 	}
-	tools.WriteResponse(w, reacPosts, http.StatusOK)
+	return reacPosts, nil
 }

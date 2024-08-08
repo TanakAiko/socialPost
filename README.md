@@ -15,11 +15,9 @@ a personal repo testing
 #### Post
 
 - createPost(userId, data...) ✅
-- getAllPost(type) 🚀
-- getGroupPost(groupId)
-- setReactionPost(postId, userId, reaction)
-- getAllPostReaction(userId)
-- getGroupPostReaction(groupId)
+- getAllPost(userId) ✅
+- getGroupPost(groupId) ✅
+- setReactionPost(postId, userId, reaction) ✅
 
 #### Comment
 
